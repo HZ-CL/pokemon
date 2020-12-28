@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Pokemon</title>
+    <script>
+        //funcion buttons
+        var grup = 1;
+
+        function traepoke() {
+            for (var i = grup; i <= grup + 9; i++) {
+                $("#img").append("<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png>");
+                $("img").css("background-image", "url(https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png)");
+                $("img").css("background-color", "white");
+                $("img").css("border", "solid");
+                $("#img").css("margin", "0px auto");
+            }
+        }
+        //funcion  para button inicio
+        function inicio() {
+            for (var i = grup; i <= grup + 10; i++) {
+                $("#img").append("<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png>");
+                $("img").css("background-image", "url(https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png)");
+                $("img").css("background-color", "white");
+                $("img").css("border", "solid");
+                $("#img").css("margin", "0px auto");
+            }
+        }
+        //inicio carga de jquery==========================================
+        $(document).ready(function() {
+            $("#background_pag").css("background-image", "url(https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png)")
+            $("h1").css("color", "white");
+            $("h4").css("color", "white");
+            $("#background_pag").css("margin", "0px auto");
+
+            for (var i = grup; i <= grup + 10; i++) {
+                $("#img").append("<img src=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png>");
+                $("img").css("background-image", "url(https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png)");
+                $("img").css("background-color", "white");
+                $("img").css("border", "solid");
+                $("#img").css("margin", "0px auto");
+            }
+
+            console.log(grup); //control al cargar
+            $(".reset10").click(function() {
+                if (grup > 12) {
+                    $("img").fadeOut(50);
+                    grup = 1;
+                    inicio();
+                    console.log(grup); //control click
+                }
+            });
+            $(".menos10").click(function() {
+                if (grup >= 13) {
+                    $("img").fadeOut(50);
+                    grup = grup - 20;
+                    console.log(grup); //control click
+                    traepoke();
+                    grup = grup + 10;
+                    console.log(grup); //control click
+                }
+            });
+            $(".mas10").click(function() {
+                if (grup == 1) {
+                    grup = 12;
+                    $("img").slideUp(150);
+                    traepoke();
+                    grup = 22;
+                    console.log(grup); //control click
+                } else {
+                    if (grup < 151) {
+                        $("img").slideUp(150);
+                        traepoke();
+                        grup = grup + 10;
+                        console.log(grup); //control click
+                    }
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div id="background_pag" class="text-center col-8">
+        <h1>API Pokemon</h1>
+        <h4>Gen 1</h4>
+        <button type="button" class="menos10 btn btn-warning">-10</button>
+        <button type="button" class="reset10 btn btn-warning">Inicio</button>
+        <button type="button" class="mas10 btn btn-warning">+10</button>
+        <div id="img" class="text-center col-8">
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>
